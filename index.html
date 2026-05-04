@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<title>2026 Epic Adventure &mdash; Trip Index</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--navy:#1a3a5c;--gold:#c8873a;--cream:#faf7f2;--border:#d1d9e6;--gray:#6b7280;--green:#27ae60;--light:#e8edf4;--travel:#4a90d9;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;overflow:hidden;}
+body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:#222;display:flex;flex-direction:column;}
+.page-header{background:var(--navy);border-bottom:4px solid var(--gold);padding:4px 20px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.header-left{display:flex;align-items:center;gap:12px;}
+.logo-block{text-align:center;border-right:2px solid var(--gold);padding-right:12px;flex-shrink:0;}
+.logo-sun{display:block;margin:0 auto 1px;width:36px;height:18px;background:radial-gradient(circle at 50% 100%,#f5c850 0%,#c8873a 40%,rgba(200,135,58,.15) 75%,transparent 100%);border-radius:36px 36px 0 0;}
+.logo-mountains{display:block;font-size:8px;color:#3a5a7c;letter-spacing:-2px;line-height:1;margin-bottom:1px;}
+.logo-line1{font-family:'Playfair Display',serif;font-size:8px;font-style:italic;color:var(--gold);line-height:1.1;}
+.logo-line2{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#faf7f2;letter-spacing:3px;line-height:1;text-transform:uppercase;}
+.logo-line3{font-family:'Playfair Display',serif;font-size:8px;font-style:italic;color:#d4710a;letter-spacing:1px;}
+.header-title{color:white;}
+.nb-label{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:1px;}
+.page-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:white;line-height:1.1;}
+.page-sub{font-size:9px;color:#a8bcd4;margin-top:1px;}
+.header-right{display:flex;flex-direction:row;align-items:center;gap:16px;}
+.header-clock{font-family:'Playfair Display',serif;font-size:24px;color:white;letter-spacing:1px;}
+.legend{display:flex;gap:12px;align-items:center;}
+.leg-item{display:flex;align-items:center;gap:5px;font-size:9px;color:#a8bcd4;}
+.leg-swatch{width:20px;height:4px;border-radius:2px;}
+.leg-swatch.travel{background:var(--travel);}
+.leg-swatch.activity{background:var(--green);}
+.leg-swatch.home{background:var(--gold);}
+.grid-wrapper{flex:1;padding:4px 16px 8px;display:flex;flex-direction:column;align-items:center;min-height:0;overflow:hidden;}
+.grid{display:grid;grid-template-columns:repeat(5,auto);grid-template-rows:repeat(9,minmax(0,1fr));gap:5px;min-height:0;height:100%;}
+.stop-cell{background:white;border:1px solid var(--border);border-radius:6px;padding:4px 14px;text-decoration:none;color:inherit;display:flex;flex-direction:column;justify-content:center;transition:border-color .15s,box-shadow .15s;overflow:hidden;cursor:pointer;min-height:0;min-width:160px;}
+.stop-cell:hover{border-color:var(--gold);box-shadow:0 2px 6px rgba(200,135,58,.25);}
+.stop-cell:active{background:var(--light);}
+.stop-cell.travel{border-top:3px solid var(--travel);border-left:3px solid var(--travel);}
+.stop-cell.activity{border-top:3px solid var(--green);}
+.stop-cell.home-stop{border-top:3px solid var(--gold);}
+.stop-cell.empty{background:var(--light);border:1px dashed var(--border);cursor:default;pointer-events:none;}
+.cell-name{font-family:'Playfair Display',serif;font-size:12px;color:var(--navy);font-weight:700;line-height:1.2;white-space:nowrap;}
+.cell-date{font-size:10px;color:var(--gold);font-weight:600;white-space:nowrap;line-height:1.3;margin-top:1px;}
+.cell-detail{font-size:9px;color:var(--gray);white-space:nowrap;line-height:1.3;}
+</style>
+</head>
+<body>
+<div class="page-header">
+  <div class="header-left">
+    <div class="logo-block">
+      <span class="logo-sun"></span>
+      <span class="logo-mountains">&#9650;&#9650;&#9650;</span>
+      <div class="logo-line1">Summer &#x2019;26</div>
+      <div class="logo-line2">Epic</div>
+      <div class="logo-line3">Adventure</div>
+    </div>
+    <div class="header-title">
+      <div class="nb-label">2026 Summer Road Trip</div>
+      <div class="page-title">Dave &amp; Jeani&#x2019;s Epic Adventure</div>
+      <div class="page-sub">60 Days &nbsp;&middot;&nbsp; Midwest &middot; Rockies &middot; Southwest &nbsp;&middot;&nbsp; May&ndash;July 2026</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="legend">
+      <div class="leg-item"><div class="leg-swatch travel"></div>Travel Day</div>
+      <div class="leg-item"><div class="leg-swatch activity"></div>Activity Day</div>
+    </div>
+    <a href="newsletter.html" style="display:inline-block;background:#c8873a;color:white;
+      font-size:11px;font-weight:600;padding:6px 14px;border-radius:16px;text-decoration:none;
+      letter-spacing:.5px;white-space:nowrap;">&#128247; Newsletter</a>
+    <a href="davie_jayne/index.html" style="display:inline-block;background:#1a3a5c;color:#c8873a;font-size:11px;font-weight:600;padding:6px 14px;border-radius:16px;text-decoration:none;letter-spacing:.5px;white-space:nowrap;border:1.5px solid #c8873a;">&#127807; Davie Jayne</a>
+    <button id="authBtn" onclick="signIn()" style="display:inline-block;background:#4285f4;color:white;font-size:11px;font-weight:600;padding:6px 14px;border-radius:16px;border:none;cursor:pointer;letter-spacing:.5px;white-space:nowrap;">Sign In</button>
+    <span id="authStatus" style="font-size:10px;color:#888;white-space:nowrap;"></span>
+    <div class="header-clock" id="headerClock"></div>
+  </div>
+</div>
+<div class="grid-wrapper">
+<div class="grid">
+  <a href="trip_pages/001_travel_day_home_to_coleman_s.html" class="stop-cell travel"><div class="cell-name">Home to Coleman&#x2019;s</div><div class="cell-date">Fri 05/22</div><div class="cell-detail">Springville, AL</div></a>
+  <a href="trip_pages/002_travel_day_coleman_s_to_benton.html" class="stop-cell travel"><div class="cell-name">Coleman&#x2019;s to Benton</div><div class="cell-date">Tue 05/26</div><div class="cell-detail">Southern Illinois</div></a>
+  <a href="trip_pages/003_travel_day_benton_to_cracker_barrel.html" class="stop-cell travel"><div class="cell-name">Benton to Cracker Barrel</div><div class="cell-date">Sat 05/30</div><div class="cell-detail">Columbia, MO</div></a>
+  <a href="trip_pages/004_travel_day_cracker_barrel_to_offutt_afb_famcamp.html" class="stop-cell travel"><div class="cell-name">Cracker Barrel to Offutt AFB</div><div class="cell-date">Sun 05/31</div><div class="cell-detail">Omaha, NE</div></a>
+  <a href="trip_pages/005_day_offutt_afb_famcamp_day_2_base_day_options.html" class="stop-cell activity"><div class="cell-name">Omaha Base Day</div><div class="cell-date">Mon 06/01</div><div class="cell-detail">SAC Museum &middot; Old Market</div></a>
+  <a href="trip_pages/006_travel_day_offutt_afb_famcamp_to_cabela_s.html" class="stop-cell travel"><div class="cell-name">Omaha to Cabela&#x2019;s</div><div class="cell-date">Tue 06/02</div><div class="cell-detail">Mitchell, SD</div></a>
+  <a href="trip_pages/007_travel_day_cabela_s_to_buffalo_gap_the_wall.html" class="stop-cell travel"><div class="cell-name">Cabela&#x2019;s to Badlands</div><div class="cell-date">Wed 06/03</div><div class="cell-detail">Wall, SD</div></a>
+  <a href="trip_pages/008_day_buffalo_gap_the_wall_wall_day_1_prairie_homestead_backroads.html" class="stop-cell activity"><div class="cell-name">Wall &#8212; Prairie Homestead</div><div class="cell-date">Thu 06/04</div><div class="cell-detail">Backroads Drive</div></a>
+  <a href="trip_pages/009_day_buffalo_gap_the_wall_wall_day_2_badlands_loop_minuteman_missile.html" class="stop-cell activity"><div class="cell-name">Wall &#8212; Badlands Loop</div><div class="cell-date">Fri 06/05</div><div class="cell-detail">Minuteman Missile</div></a>
+  <a href="trip_pages/010_day_buffalo_gap_the_wall_wall_optional_prairie_dogs_sage_creek_rim.html" class="stop-cell activity"><div class="cell-name">Wall &#8212; Prairie Dogs</div><div class="cell-date">Sat 06/06</div><div class="cell-detail">Sage Creek Rim</div></a>
+  <a href="trip_pages/011_travel_day_buffalo_gap_the_wall_to_horsethief_lake.html" class="stop-cell travel"><div class="cell-name">Badlands to Black Hills</div><div class="cell-date">Sun 06/07</div><div class="cell-detail">Keystone, SD</div></a>
+  <a href="trip_pages/012_day_horsethief_lake_black_hills_day_1_rushmore_iron_mountain_wildlife_loop.html" class="stop-cell activity"><div class="cell-name">Black Hills &#8212; Rushmore</div><div class="cell-date">Mon 06/08</div><div class="cell-detail">Iron Mtn &middot; Wildlife Loop</div></a>
+  <a href="trip_pages/013_day_horsethief_lake_black_hills_day_2_sylvan_lake_cathedral_spires_needles.html" class="stop-cell activity"><div class="cell-name">Black Hills &#8212; Sylvan Lake</div><div class="cell-date">Tue 06/09</div><div class="cell-detail">Needles Highway</div></a>
+  <a href="trip_pages/014_day_horsethief_lake_black_hills_day_3_wind_cave_prairie_drives.html" class="stop-cell activity"><div class="cell-name">Black Hills &#8212; Wind Cave</div><div class="cell-date">Wed 06/10</div><div class="cell-detail">Prairie Drives</div></a>
+  <a href="trip_pages/015_day_horsethief_lake_black_hills_scenic_spearfish_canyon_deadwood.html" class="stop-cell activity"><div class="cell-name">Black Hills &#8212; Spearfish</div><div class="cell-date">Thu 06/11</div><div class="cell-detail">Deadwood</div></a>
+  <a href="trip_pages/016_travel_day_horsethief_lake_to_devils_tower_view_rv_park.html" class="stop-cell travel"><div class="cell-name">Black Hills to Devils Tower</div><div class="cell-date">Fri 06/12</div><div class="cell-detail">Devils Tower, WY</div></a>
+  <a href="trip_pages/017_day_devils_tower_view_rv_park_devils_tower_day_2_monument_visit.html" class="stop-cell activity"><div class="cell-name">Devils Tower &#8212; Monument</div><div class="cell-date">Sat 06/13</div><div class="cell-detail">Tower Trail &middot; Views</div></a>
+  <a href="trip_pages/018_travel_day_devils_tower_view_rv_park_to_canyon_creek_brewing.html" class="stop-cell travel"><div class="cell-name">Devils Tower to Billings</div><div class="cell-date">Sun 06/14</div><div class="cell-detail">Little Bighorn Stop</div></a>
+  <a href="trip_pages/019_travel_day_canyon_creek_brewing_to_yellowstone.html" class="stop-cell travel"><div class="cell-name">Billings to Yellowstone</div><div class="cell-date">Mon 06/15</div><div class="cell-detail">Cameron, MT</div></a>
+  <a href="trip_pages/020_day_yellowstone_yellowstone_day_1_lower_loop.html" class="stop-cell activity"><div class="cell-name">Yellowstone &#8212; Lower Loop</div><div class="cell-date">Tue 06/16</div><div class="cell-detail">Old Faithful &middot; Prismatic</div></a>
+  <a href="trip_pages/021_day_yellowstone_yellowstone_day_2_norris_mammoth.html" class="stop-cell activity"><div class="cell-name">Yellowstone &#8212; Norris</div><div class="cell-date">Wed 06/17</div><div class="cell-detail">Mammoth Hot Springs</div></a>
+  <a href="trip_pages/022_day_yellowstone_yellowstone_day_3_lamar_valley.html" class="stop-cell activity"><div class="cell-name">Yellowstone &#8212; Lamar Valley</div><div class="cell-date">Thu 06/18</div><div class="cell-detail">Wolves &middot; Cooke City</div></a>
+  <a href="trip_pages/023_travel_day_yellowstone_to_upper_teton_view.html" class="stop-cell travel"><div class="cell-name">Yellowstone to Grand Teton</div><div class="cell-date">Sat 06/20</div><div class="cell-detail">Moose, WY</div></a>
+  <a href="trip_pages/024_day_upper_teton_view_tetons_day_1_mormon_row_schwabacher_jenny_lake.html" class="stop-cell activity"><div class="cell-name">Tetons &#8212; Mormon Row</div><div class="cell-date">Sun 06/21</div><div class="cell-detail">Schwabacher &middot; Jenny Lake</div></a>
+  <a href="trip_pages/025_day_upper_teton_view_tetons_scenic_drive_snake_river_oxbow_bend.html" class="stop-cell activity"><div class="cell-name">Tetons &#8212; Snake River</div><div class="cell-date">Mon 06/22</div><div class="cell-detail">Oxbow Bend</div></a>
+  <a href="trip_pages/026_travel_day_upper_teton_view_to_boysen_state_park.html" class="stop-cell travel"><div class="cell-name">Grand Teton to Boysen</div><div class="cell-date">Tue 06/23</div><div class="cell-detail">Shoshoni, WY</div></a>
+  <a href="trip_pages/027_travel_day_boysen_state_park_to_green_ridge_campground.html" class="stop-cell travel"><div class="cell-name">Boysen to Green Ridge</div><div class="cell-date">Thu 06/25</div><div class="cell-detail">Grand Lake, CO</div></a>
+  <a href="trip_pages/028_day_green_ridge_campground_green_ridge_day_1_rocky_mountain_np_estes_park.html" class="stop-cell activity"><div class="cell-name">Green Ridge &#8212; RMNP Day 1</div><div class="cell-date">Fri 06/26</div><div class="cell-detail">Trail Ridge &middot; Estes Park</div></a>
+  <a href="trip_pages/029_day_green_ridge_campground_green_ridge_day_2_holzwarth_adams_falls_grand_lake.html" class="stop-cell activity"><div class="cell-name">Green Ridge &#8212; RMNP Day 2</div><div class="cell-date">Sat 06/27</div><div class="cell-detail">Holzwarth &middot; Grand Lake</div></a>
+  <a href="trip_pages/030_travel_day_green_ridge_campground_to_peregrine_pines_famcamp.html" class="stop-cell travel"><div class="cell-name">Green Ridge to USAF</div><div class="cell-date">Sun 06/28</div><div class="cell-detail">Colorado Springs, CO</div></a>
+  <a href="trip_pages/031_day_peregrine_pines_famcamp_usaf_day_1_garden_of_the_gods_manitou_springs.html" class="stop-cell activity"><div class="cell-name">USAF &#8212; Garden of Gods</div><div class="cell-date">Mon 06/29</div><div class="cell-detail">Manitou Springs</div></a>
+  <a href="trip_pages/032_day_peregrine_pines_famcamp_usaf_day_2_pikes_peak_highway.html" class="stop-cell activity"><div class="cell-name">USAF &#8212; Pikes Peak</div><div class="cell-date">Tue 06/30</div><div class="cell-detail">Summit &middot; Woodland Park</div></a>
+  <a href="trip_pages/033_day_peregrine_pines_famcamp_usaf_day_3_royal_gorge_canon_city.html" class="stop-cell activity"><div class="cell-name">USAF &#8212; Royal Gorge</div><div class="cell-date">Wed 07/01</div><div class="cell-detail">Ca&ntilde;on City</div></a>
+  <a href="trip_pages/034_day_peregrine_pines_famcamp_usaf_rockies_game_coors_field_denver.html" class="stop-cell activity"><div class="cell-name">USAF &#8212; Rockies Game</div><div class="cell-date">Thu 07/02</div><div class="cell-detail">Coors Field, Denver</div></a>
+  <a href="trip_pages/035_travel_day_peregrine_pines_famcamp_to_haviland_lake.html" class="stop-cell travel"><div class="cell-name">USAF to Haviland Lake</div><div class="cell-date">Fri 07/03</div><div class="cell-detail">Durango, CO</div></a>
+  <a href="trip_pages/036_day_haviland_lake_haviland_4th_of_july_silverton_parade_fireworks.html" class="stop-cell activity"><div class="cell-name">Haviland &#8212; 4th of July</div><div class="cell-date">Sat 07/04</div><div class="cell-detail">Silverton Fireworks</div></a>
+  <a href="trip_pages/037_day_haviland_lake_haviland_day_2_telluride_lizard_head_pass.html" class="stop-cell activity"><div class="cell-name">Haviland &#8212; Telluride</div><div class="cell-date">Sun 07/05</div><div class="cell-detail">Gondola &middot; Bridal Veil</div></a>
+  <a href="trip_pages/038_day_haviland_lake_haviland_day_3_durango_historic_district.html" class="stop-cell activity"><div class="cell-name">Haviland &#8212; Durango</div><div class="cell-date">Mon 07/06</div><div class="cell-detail">Main Ave &middot; River Trail</div></a>
+  <a href="trip_pages/039_day_haviland_lake_haviland_scenic_alpine_loop_animas_forks.html" class="stop-cell activity"><div class="cell-name">Haviland &#8212; Alpine Loop</div><div class="cell-date">Tue 07/07</div><div class="cell-detail">Animas Forks</div></a>
+  <a href="trip_pages/040_travel_day_haviland_lake_to_tesuque_casino.html" class="stop-cell travel"><div class="cell-name">Haviland to Santa Fe</div><div class="cell-date">Wed 07/08</div><div class="cell-detail">Tesuque Casino, NM</div></a>
+  <a href="trip_pages/041_travel_day_tesuque_casino_to_palo_duro_canyon_sp.html" class="stop-cell travel"><div class="cell-name">Santa Fe to Palo Duro</div><div class="cell-date">Thu 07/09</div><div class="cell-detail">Canyon, TX</div></a>
+  <a href="trip_pages/042_day_palo_duro_canyon_sp_palo_duro_day_1_canyon_floor_lighthouse_texas_musical.html" class="stop-cell activity"><div class="cell-name">Palo Duro &#8212; Day 1</div><div class="cell-date">Fri 07/10</div><div class="cell-detail">Canyon Floor &middot; TEXAS</div></a>
+  <a href="trip_pages/043_travel_day_palo_duro_canyon_sp_to_hickory_creek_park.html" class="stop-cell travel"><div class="cell-name">Palo Duro to Lewisville</div><div class="cell-date">Sat 07/11</div><div class="cell-detail">Hickory Creek, TX</div></a>
+  <a href="trip_pages/044_travel_day_hickory_creek_park_to_poverty_point_reservoir_sp.html" class="stop-cell travel"><div class="cell-name">Lewisville to Poverty Point</div><div class="cell-date">Wed 07/15</div><div class="cell-detail">Delhi, LA</div></a>
+  <a href="trip_pages/045_travel_day_poverty_point_reservoir_sp_to_oak_mountain_state_park.html" class="stop-cell travel"><div class="cell-name">Poverty Point to Oak Mountain</div><div class="cell-date">Fri 07/17</div><div class="cell-detail">Pelham, AL</div></a>
+  <a href="trip_pages/046_travel_day_oak_mountain_state_park_to_home.html" class="stop-cell travel"><div class="cell-name">Oak Mountain to Home &#127968;</div><div class="cell-date">Tue 07/21</div><div class="cell-detail">Grovetown, GA</div></a>
+  <div class="stop-cell empty"></div>
+</div></div>
+<script>
+function updateClock(){const t=new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit',hour12:true});const el=document.getElementById('headerClock');if(el)el.textContent=t;}
+updateClock();setInterval(updateClock,1000);
+function matchHeaderToGrid(){const grid=document.querySelector('.grid');const header=document.querySelector('.page-header');if(grid&&header){const w=grid.offsetWidth;header.style.width=w+'px';header.style.margin='0 auto';}}
+window.addEventListener('load',matchHeaderToGrid);
+window.addEventListener('resize',matchHeaderToGrid);
+</script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script>
+const _fbConfig={apiKey:'AIzaSyD5g2vWXE5CkUFA-0a5NKNnTzD3n5aESXI',authDomain:'epic-adventure-d89e3.firebaseapp.com',projectId:'epic-adventure-d89e3',storageBucket:'epic-adventure-d89e3.firebasestorage.app',messagingSenderId:'538638397027',appId:'1:538638397027:web:7054ea980ce5788c6f5256'};
+const _app=firebase.apps.length?firebase.apps[0]:firebase.initializeApp(_fbConfig);
+firebase.auth(_app).setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+function signIn(){const p=new firebase.auth.GoogleAuthProvider();firebase.auth(_app).signInWithRedirect(p);}
+function signOut(){firebase.auth(_app).signOut();}
+firebase.auth(_app).getRedirectResult().catch(e=>console.log('redirect:',e));
+firebase.auth(_app).onAuthStateChanged(user=>{
+  const btn=document.getElementById('authBtn');
+  const status=document.getElementById('authStatus');
+  if(user){
+    if(btn){btn.textContent='Sign Out';btn.style.background='#888';btn.onclick=signOut;}
+    if(status) status.textContent='Hi '+user.displayName.split(' ')[0]+'!';
+  }else{
+    if(btn){btn.textContent='Sign In';btn.style.background='#4285f4';btn.onclick=signIn;}
+    if(status) status.textContent='';
+  }
+});
+</script>
+</body>
+</html>

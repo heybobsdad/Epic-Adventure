@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home! 🎉 — Davie Jayne's Journal</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:"DM Sans",sans-serif;background:#fdf6ee;color:#1a3a5c;}
+
+/* TOPBAR */
+.tb{background:#1a3a5c;border-bottom:3px solid #c8873a;display:flex;align-items:center;gap:0.85rem;padding:0.42rem 1.25rem;position:sticky;top:0;z-index:100;}
+.tb-brand{display:flex;flex-direction:column;flex:1;margin-left:0.5rem;}
+.tb-title{font-family:"Caveat",cursive;font-size:20px;font-weight:700;color:#fdf6ee;display:flex;align-items:baseline;gap:6px;line-height:1;}
+.tb-j{font-family:"Caveat",cursive;font-size:13px;font-weight:600;color:#c8873a;}
+.tb-sub{font-family:"Caveat",cursive;font-size:11px;color:#c8873a;opacity:.75;line-height:1;margin-top:1px;}
+.tb-right{display:flex;align-items:center;gap:0.45rem;flex-shrink:0;}
+.tb-btn{display:inline-flex;align-items:center;gap:4px;font-family:"Caveat",cursive;font-size:14px;font-weight:700;padding:0.28rem 0.75rem;border-radius:7px;cursor:pointer;border:none;white-space:nowrap;text-decoration:none;}
+.tb-btn.home{background:transparent;color:#c8873a;border:1.5px solid #c8873a;}
+.tb-btn.home:hover{background:rgba(200,135,58,.15);}
+.tb-btn.top{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5);}
+.tb-btn.top:hover{background:rgba(255,255,255,.12);}
+.tb-btn.share{background:transparent;color:#fff;border:2px solid #fff;}
+.tb-btn.share:hover{background:rgba(255,255,255,.15);}
+
+/* MILES BAR */
+.miles-bar{background:#1a3a5c;border-bottom:2px solid #c8873a;padding:0.45rem 1.25rem;display:flex;align-items:center;gap:1.25rem;}
+.miles-item{display:flex;flex-direction:column;align-items:center;flex-shrink:0;}
+.miles-val{font-family:"Caveat",cursive;font-size:20px;font-weight:700;color:#fdf6ee;line-height:1;}
+.miles-lbl{font-family:"DM Sans",sans-serif;font-size:8.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#c8873a;margin-top:1px;}
+.miles-track{flex:1;height:7px;background:rgba(255,255,255,.12);border-radius:100px;overflow:hidden;}
+.miles-fill{height:100%;background:linear-gradient(90deg,#c8873a,#f5c850);border-radius:100px;}
+.miles-pct{font-family:"Caveat",cursive;font-size:13px;font-weight:700;color:#c8873a;white-space:nowrap;flex-shrink:0;}
+
+/* WEATHER BAR */
+.wx-bar{background:#0d2238;border-bottom:2px solid #1a3a5c;padding:0.42rem 1.25rem;display:flex;align-items:center;gap:0;overflow:hidden;}
+.wx-now{display:flex;align-items:center;gap:0.6rem;flex-shrink:0;padding-right:1.1rem;border-right:1px solid rgba(200,135,58,.3);margin-right:1.1rem;}
+.wx-now-temp{font-family:"Caveat",cursive;font-size:28px;font-weight:700;color:#fdf6ee;line-height:1;}
+.wx-now-desc{display:flex;flex-direction:column;}
+.wx-now-label{font-family:"DM Sans",sans-serif;font-size:8.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#c8873a;}
+.wx-now-cond{font-family:"Caveat",cursive;font-size:13px;color:#fdf6ee;margin-top:1px;}
+.wx-forecasts{display:flex;align-items:center;gap:0;flex:1;}
+.wx-slot{display:flex;flex-direction:column;align-items:center;flex:1;padding:0 0.5rem;border-right:1px solid rgba(200,135,58,.2);}
+.wx-slot:last-child{border-right:none;}
+.wx-slot-time{font-family:"DM Sans",sans-serif;font-size:8.5px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#c8873a;margin-bottom:2px;}
+.wx-slot-ico{font-size:16px;line-height:1;margin-bottom:1px;}
+.wx-slot-temp{font-family:"Caveat",cursive;font-size:18px;font-weight:700;color:#fdf6ee;line-height:1;}
+.wx-slot-desc{font-family:"Caveat",cursive;font-size:11px;color:#c8a870;margin-top:1px;text-align:center;}
+.wx-loading{font-family:"Caveat",cursive;font-size:14px;color:#c8a870;font-style:italic;}
+.wx-error{font-family:"Caveat",cursive;font-size:13px;color:#c8a870;font-style:italic;}
+
+/* MAIN - tighter padding */
+.main{width:100%;margin:0;padding:1.5rem 1rem 3.5rem;}
+
+/* PAGE HEADER */
+.pg-badge{display:inline-flex;align-items:center;gap:6px;border-radius:100px;font-family:"Caveat",cursive;font-size:13px;font-weight:700;padding:.22rem .9rem;margin-bottom:.55rem;border:2px solid;}
+.pg-badge.travel{background:#fff8e0;color:#8a5010;border-color:#c8873a;}
+.pg-badge.stay{background:#e4f4f0;color:#1a5040;border-color:#4a9080;}
+.pg-badge.family{background:#fceef0;color:#702838;border-color:#c06878;}
+.pg-title{font-family:"Caveat",cursive;font-size:42px;font-weight:700;color:#1a3a5c;line-height:1.05;margin-bottom:.18rem;}
+.pg-sub{font-family:"Lora",serif;font-size:13.5px;font-style:italic;color:#7a6040;margin-bottom:1.5rem;}
+
+/* STOP CARD */
+.sc{background:#1a3a5c;border:2px solid #c8873a;border-radius:14px;padding:1.2rem 1.35rem;margin-bottom:1.6rem;}
+.sc-name{font-family:"Caveat",cursive;font-size:22px;font-weight:700;color:#fdf6ee;margin-bottom:.15rem;}
+.sc-loc{font-family:"Lora",serif;font-size:12px;font-style:italic;color:#c8873a;margin-bottom:1rem;}
+.sc-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:.9rem;}
+.sc-fact{background:rgba(255,255,255,.08);border-radius:8px;padding:.62rem .5rem;text-align:center;}
+.sc-val{font-family:"Caveat",cursive;font-size:26px;font-weight:700;color:#fdf6ee;display:block;line-height:1.1;}
+.sc-lbl{font-family:"DM Sans",sans-serif;font-size:9px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#c8873a;display:block;margin-top:2px;}
+.sc-hookup{display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.07);border-radius:8px;padding:.5rem .75rem;margin-bottom:.6rem;font-family:"Caveat",cursive;font-size:16px;font-weight:600;color:#fdf6ee;}
+.sc-specials{display:flex;flex-direction:column;gap:6px;}
+.sc-special{display:flex;align-items:center;gap:9px;background:rgba(200,135,58,.2);border-left:3px solid #c8873a;border-radius:7px;padding:.42rem .75rem;font-family:"Caveat",cursive;font-size:15px;font-weight:700;color:#fdf6ee;}
+
+/* SECTION HEADER */
+.sec{font-family:"Caveat",cursive;font-size:19px;font-weight:700;color:#1a3a5c;margin-bottom:.75rem;display:flex;align-items:center;gap:8px;}
+.sec::after{content:"";flex:1;height:2px;background:repeating-linear-gradient(90deg,#c8873a 0,#c8873a 6px,transparent 6px,transparent 12px);}
+
+/* ACTIVITY CARDS */
+.cards{display:flex;flex-direction:column;gap:.75rem;margin-bottom:1.6rem;}
+.card{border-radius:13px;padding:1.1rem 1.2rem;position:relative;display:flex;align-items:flex-start;gap:1rem;}
+.card.feat{background:#fff8e0;border:2px solid #c8873a;}
+.card.sub{background:#fdf6ee;border:1.5px dashed #c4a870;}
+.card-badge{position:absolute;top:-1px;right:14px;font-family:"Caveat",cursive;font-size:12px;font-weight:700;padding:2px 10px;border-radius:0 0 8px 8px;}
+.bg-gold{background:#c8873a;color:#fdf6ee;}.bg-coral{background:#c8503a;color:#fdf6ee;}
+.bg-teal{background:#4a9080;color:#fdf6ee;}.bg-navy{background:#1a3a5c;color:#fdf6ee;}
+.card-ico{font-size:26px;flex-shrink:0;line-height:1;}
+.card-body{flex:1;}
+.card-label{font-family:"Caveat",cursive;font-size:23px;font-weight:700;color:#1a3a5c;line-height:1.15;margin-bottom:3px;}
+.card-tagline{font-family:"Lora",serif;font-size:13px;color:#5a3a20;line-height:1.65;margin-bottom:.55rem;}
+.card-link{display:inline-flex;align-items:center;gap:5px;font-family:"Caveat",cursive;font-size:15px;font-weight:700;color:#c8873a;text-decoration:none;border-bottom:1.5px dashed #c8873a;padding-bottom:1px;}
+.card-link:hover{color:#1a3a5c;border-color:#1a3a5c;}
+
+/* HR */
+.hr{border:none;border-top:2px dashed #c8873a;margin:1.5rem 0;}
+
+/* JOURNAL */
+.journal-box{width:100%;background:#fffef6;border:2px dashed #c8873a;border-radius:10px;padding:.9rem 1.1rem;font-family:"Caveat",cursive;font-size:19px;color:#1a3a5c;resize:none;min-height:120px;line-height:1.65;display:block;}
+.journal-box::placeholder{color:#c4a060;font-style:italic;}
+.jrow{display:flex;align-items:center;justify-content:space-between;margin-top:.6rem;gap:.5rem;}
+.jsync{font-family:"Caveat",cursive;font-size:13px;color:#7a6040;font-style:italic;}
+.jsave{background:#1a3a5c;color:#fdf6ee;border:2px solid #c8873a;border-radius:8px;font-family:"Caveat",cursive;font-size:17px;font-weight:700;padding:.44rem 1.3rem;cursor:pointer;}
+.jsave:hover{background:#c8873a;}
+
+/* PHOTOS */
+.photo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:.6rem;}
+.photo-slot{aspect-ratio:1;border-radius:9px;border:2px dashed #c4a870;background:#fffbf0;display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;position:relative;transition:border-color .15s,background .15s;}
+.photo-slot:hover{border-color:#c8873a;background:#fff8e0;}
+.photo-slot input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.slot-inner{display:flex;flex-direction:column;align-items:center;gap:4px;pointer-events:none;}
+.slot-inner span{font-family:"Caveat",cursive;font-size:11px;color:#b08040;}
+.photo-hint{font-family:"Caveat",cursive;font-size:13px;color:#8a6840;font-style:italic;}
+
+/* TOAST */
+.toast{display:none;position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fdf6ee;font-family:"Caveat",cursive;font-size:15px;font-weight:600;padding:.5rem 1.5rem;border-radius:100px;white-space:nowrap;pointer-events:none;z-index:999;border:2px solid #c8873a;}
+.toast.on{display:block;}
+
+/* WEATHER BAR */
+.wx-bar{background:#0d2238;border-bottom:2px solid #1a3a5c;padding:0.42rem 1.25rem;display:flex;align-items:center;gap:0;overflow:hidden;min-height:32px;}
+.wx-now{display:flex;align-items:center;gap:0.6rem;flex-shrink:0;padding-right:1.1rem;border-right:1px solid rgba(200,135,58,.3);margin-right:1.1rem;}
+.wx-now-temp{font-family:"Caveat",cursive;font-size:26px;font-weight:700;color:#fdf6ee;line-height:1;}
+.wx-now-desc{display:flex;flex-direction:column;}
+.wx-now-label{font-family:"DM Sans",sans-serif;font-size:8px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#c8873a;}
+.wx-now-cond{font-family:"Caveat",cursive;font-size:13px;color:#fdf6ee;margin-top:1px;}
+.wx-forecasts{display:flex;align-items:center;flex:1;gap:0;overflow:hidden;}
+.wx-slot{display:flex;flex-direction:column;align-items:center;flex:1;padding:0 0.5rem;border-right:1px solid rgba(200,135,58,.2);}
+.wx-slot:last-child{border-right:none;}
+.wx-slot-time{font-family:"DM Sans",sans-serif;font-size:8.5px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#c8873a;margin-bottom:2px;}
+.wx-slot-ico{font-size:16px;line-height:1;margin-bottom:1px;}
+.wx-slot-temp{font-family:"Caveat",cursive;font-size:18px;font-weight:700;color:#fdf6ee;line-height:1;}
+.wx-slot-desc{font-family:"Caveat",cursive;font-size:11px;color:#c8a870;margin-top:1px;text-align:center;}
+.wx-loading{font-family:"Caveat",cursive;font-size:13px;color:#c8873a;padding:0.3rem 0;}
+.wx-error{font-family:"Caveat",cursive;font-size:12px;color:#c8873a;opacity:.6;}
+/* TRAVEL MENTION */
+.travel-mention{background:#fff8e0;border:1.5px dashed #c8873a;border-radius:10px;padding:.85rem 1.1rem;margin-bottom:1.5rem;font-family:"Caveat",cursive;font-size:17px;color:#5a3a20;line-height:1.6;}
+.travel-mention strong{color:#c8873a;font-weight:700;}
+</style>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+</head>
+<body>
+<div class="tb" id="top">
+  <svg width="42" height="42" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+  <rect width="52" height="52" rx="7" fill="#0d2238"/>
+  <rect x="2.5" y="2.5" width="47" height="47" rx="6" fill="none" stroke="#c8873a" stroke-width="1.5"/>
+  <line x1="26" y1="13" x2="26" y2="9" stroke="#f5c850" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="34.7" y1="15.3" x2="37.5" y2="12.5" stroke="#f5c850" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="17.3" y1="15.3" x2="14.5" y2="12.5" stroke="#f5c850" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="38" y1="24" x2="42" y2="24" stroke="#f5c850" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="14" y1="24" x2="10" y2="24" stroke="#f5c850" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="26" cy="24" r="8" fill="#f5c850" stroke="#c8873a" stroke-width="1"/>
+  <polygon points="2,46 14,30 26,46" fill="#2a5070"/>
+  <polygon points="26,46 38,30 50,46" fill="#1a3a5c"/>
+  <polygon points="12,46 26,34 40,46" fill="#1e4468"/>
+  <polygon points="14,30 17,34 11,34" fill="#fdf6ee" opacity="0.85"/>
+  <polygon points="38,30 41,34 35,34" fill="#fdf6ee" opacity="0.85"/>
+  <line x1="2" y1="46" x2="50" y2="46" stroke="#c8873a" stroke-width="1.5"/>
+</svg>
+  <div class="tb-brand">
+    <div class="tb-title">2026 Epic Adventure <span class="tb-j">· Journal</span></div>
+    <div class="tb-sub">✦ Davie Jayne's Adventure Journal ✦</div>
+  </div>
+  <div class="tb-right">
+    <a href="index.html" class="tb-btn home">🏠 home</a>
+    <a href="#top" class="tb-btn top">↑ top</a>
+    <button class="tb-btn share" onclick="shareStop()">📱 share</button>
+  </div>
+</div>
+<div class="miles-bar">
+  <div class="miles-item">
+    <span class="miles-val">5,241</span>
+    <span class="miles-lbl">miles driven</span>
+  </div>
+  <div class="miles-track">
+    <div class="miles-fill" style="width:100%"></div>
+  </div>
+  <div class="miles-pct">100%</div>
+  <div class="miles-item">
+    <span class="miles-val">0</span>
+    <span class="miles-lbl">miles to go</span>
+  </div>
+</div>
+<div class="wx-bar" id="_wxbar"><span class="wx-loading">loading weather…</span></div>
+<div class="main">
+  <div class="pg-badge family">🏡 WE MADE IT!!</div>
+  <div class="pg-title">Home! 🎉</div>
+  <div class="pg-sub">Tuesday, July 21 · Grovetown, Georgia</div>
+  
+  <div class="sc">
+  <div class="sc-name">📍 Home — Grovetown, GA</div>
+  <div class="sc-loc">1131 Indian Springs Trl, Grovetown GA</div>
+  <div class="sc-facts">
+    <div class="sc-fact"><span class="sc-val">0</span><span class="sc-lbl">nights</span></div><div class="sc-fact"><span class="sc-val">297</span><span class="sc-lbl">miles</span></div><div class="sc-fact"><span class="sc-val">4h 28m</span><span class="sc-lbl">drive time</span></div>
+  </div>
+  <div class="sc-hookup">🏡&nbsp;&nbsp;Full everything — power, water, our own beds</div>
+  <div class="sc-specials"><div class="sc-special"><span>🎉</span><span>60 days. 5,241 miles. The Epic Adventure is complete.</span></div><div class="sc-special"><span>🐾</span><span>Max is extremely happy to be in his own yard again</span></div></div>
+</div>
+  <div class="sec">what's happening</div><div class="cards"><div class="card feat">
+  <div class="card-badge bg-gold">DONE!!</div>
+  <span class="card-ico">🎉</span>
+  <div class="card-body">
+    <div class="card-label">60 Days. 5,241 Miles. Complete.</div>
+    <div class="card-tagline">The Badlands. Black Hills. Devils Tower. Yellowstone. Grand Teton. Rocky Mountain NP. Colorado Springs. Durango. Palo Duro Canyon. Lake Lewisville. Home. Every single mile was worth it.</div>
+    <a href="https://heybobsdad.github.io/Epic-Adventure/trip_pages/045_travel_day_oak_mountain_state_park_to_home.html" target="_blank" class="card-link">see the full plan ↗</a>
+  </div>
+</div></div>
+  <div class="hr"></div>
+  <div class="sec">my journal ✍️</div>
+  <textarea class="journal-box" id="_journal" placeholder="What is the ONE moment from the whole trip you will never, ever forget?"></textarea>
+  <div class="jrow">
+    <span class="jsync" id="_sync">✦ not yet saved</span>
+    <button class="jsave" onclick="saveJournal()">save entry </button>
+  </div>
+  <div class="hr"></div>
+  <div class="sec">📸 visual memories</div>
+  <div class="photo-grid"><div class="photo-slot" id="slot0">
+  <input type="file" accept="image/*" onchange="handlePhoto(this,0)">
+  <div class="slot-inner">
+    <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
+      <rect x="1" y="3" width="18" height="14" rx="2" stroke="#c4a060" stroke-width="1.5"/>
+      <circle cx="10" cy="10" r="3" stroke="#c4a060" stroke-width="1.5"/>
+      <path d="M1 7l4-4h10l4 4" stroke="#c4a060" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>
+    <span>add photo</span>
+  </div>
+</div><div class="photo-slot" id="slot1">
+  <input type="file" accept="image/*" onchange="handlePhoto(this,1)">
+  <div class="slot-inner">
+    <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
+      <rect x="1" y="3" width="18" height="14" rx="2" stroke="#c4a060" stroke-width="1.5"/>
+      <circle cx="10" cy="10" r="3" stroke="#c4a060" stroke-width="1.5"/>
+      <path d="M1 7l4-4h10l4 4" stroke="#c4a060" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>
+    <span>add photo</span>
+  </div>
+</div><div class="photo-slot" id="slot2">
+  <input type="file" accept="image/*" onchange="handlePhoto(this,2)">
+  <div class="slot-inner">
+    <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
+      <rect x="1" y="3" width="18" height="14" rx="2" stroke="#c4a060" stroke-width="1.5"/>
+      <circle cx="10" cy="10" r="3" stroke="#c4a060" stroke-width="1.5"/>
+      <path d="M1 7l4-4h10l4 4" stroke="#c4a060" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>
+    <span>add photo</span>
+  </div>
+</div><div class="photo-slot" id="slot3">
+  <input type="file" accept="image/*" onchange="handlePhoto(this,3)">
+  <div class="slot-inner">
+    <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
+      <rect x="1" y="3" width="18" height="14" rx="2" stroke="#c4a060" stroke-width="1.5"/>
+      <circle cx="10" cy="10" r="3" stroke="#c4a060" stroke-width="1.5"/>
+      <path d="M1 7l4-4h10l4 4" stroke="#c4a060" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>
+    <span>add photo</span>
+  </div>
+</div></div><div class="photo-hint">✦ tap any slot to add a photo from this stop</div>
+</div>
+<div class="toast" id="_toast"></div>
+<script>window._SHARE="WE'RE HOME!! 🏡🎉 60 days, 5,241 miles — the 2026 EPIC ADVENTURE is COMPLETE!! Best trip of our lives 😭✨🌿";
+
+const WX_ICONS={'Sunny':'☀️','Clear':'🌙','Mostly Sunny':'🌤️','Mostly Clear':'🌙','Partly Sunny':'⛅','Partly Cloudy':'⛅','Mostly Cloudy':'🌥️','Cloudy':'☁️','Overcast':'☁️','Rain':'🌧️','Showers':'🌦️','Thunderstorm':'⛈️','Snow':'❄️','Fog':'🌫️','Windy':'💨','Hot':'🌡️'};
+function wxIcon(d){if(!d)return'🌡️';for(const[k,v]of Object.entries(WX_ICONS)){if(d.includes(k))return v;}if(d.includes('Sun')||d.includes('Clear'))return'☀️';if(d.includes('Cloud')||d.includes('Over'))return'☁️';if(d.includes('Rain')||d.includes('Show'))return'🌧️';if(d.includes('Thunder'))return'⛈️';return'🌡️';}
+function cToF(c){return Math.round(c*9/5+32);}
+async function loadWeather(lat,lng){
+  const bar=document.getElementById('_wxbar');
+  try{
+    const pt=await fetch(`https://api.weather.gov/points/${lat},${lng}`,{headers:{'User-Agent':'DavieJayneJournal/1.0'}});
+    if(!pt.ok)throw new Error();
+    const pd=await pt.json();
+    const{gridId,gridX,gridY,forecastHourly}=pd.properties;
+    let curTemp=null,curDesc='';
+    const st=await fetch(`https://api.weather.gov/gridpoints/${gridId}/${gridX},${gridY}/stations`,{headers:{'User-Agent':'DavieJayneJournal/1.0'}});
+    if(st.ok){const sd=await st.json();const sid=sd.features?.[0]?.properties?.stationIdentifier;if(sid){const ob=await fetch(`https://api.weather.gov/stations/${sid}/observations/latest`,{headers:{'User-Agent':'DavieJayneJournal/1.0'}});if(ob.ok){const od=await ob.json();const tc=od.properties?.temperature?.value;curTemp=tc!=null?cToF(tc):null;curDesc=od.properties?.textDescription||'';}}}
+    const fr=await fetch(forecastHourly,{headers:{'User-Agent':'DavieJayneJournal/1.0'}});
+    if(!fr.ok)throw new Error();
+    const fd=await fr.json();const ps=fd.properties.periods;const today=new Date().toDateString();
+    const getSlot=h=>ps.find(p=>{const t=new Date(p.startTime);return t.toDateString()===today&&t.getHours()===h;});
+    const slots=[{label:'Noon',data:getSlot(12)},{label:'4 PM',data:getSlot(16)},{label:'8 PM',data:getSlot(20)}];
+    const nowHtml=curTemp!=null?`<div class="wx-now"><div class="wx-now-temp">${curTemp}°</div><div class="wx-now-desc"><span class="wx-now-label">right now</span><span class="wx-now-cond">${wxIcon(curDesc)} ${curDesc.split(' ').slice(0,2).join(' ')}</span></div></div>`:'';
+    const slotHtml=slots.map(s=>{if(!s.data)return'';return`<div class="wx-slot"><span class="wx-slot-time">${s.label}</span><span class="wx-slot-ico">${wxIcon(s.data.shortForecast||'')}</span><span class="wx-slot-temp">${s.data.temperature}°</span><span class="wx-slot-desc">${(s.data.shortForecast||'').split(' ').slice(0,2).join(' ')}</span></div>`;}).join('');
+    bar.innerHTML=`${nowHtml}<div class="wx-forecasts">${slotHtml||'<span class="wx-error">forecast unavailable</span>'}</div>`;
+  }catch(e){bar.innerHTML='<span class="wx-error">weather unavailable</span>';}
+}
+function toast(msg){let t=document.getElementById('_toast');t.textContent=msg;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),2400);}
+function saveJournal(){document.getElementById('_sync').textContent='✦ saved just now ';toast('entry saved ');}
+function handlePhoto(inp,j){if(!inp.files||!inp.files[0])return;const r=new FileReader();r.onload=e=>{document.getElementById('slot'+j).innerHTML='<img src="'+e.target.result+'" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">';toast('photo added ');};r.readAsDataURL(inp.files[0]);}
+function shareStop(){const txt=window._SHARE+'\n\nfollow along → heybobsdad.github.io/Epic-Adventure/davie_jayne/index.html';navigator.clipboard.writeText(txt).then(()=>toast('copied! paste anywhere '));}
+
+// ── Firebase ──────────────────────────────────────────────────────────────────
+function getApp(){
+  if(window._app) return window._app;
+  const cfg={apiKey:'AIzaSyD5g2vWXE5CkUFA-0a5NKNnTzD3n5aESXI',authDomain:'epic-adventure-d89e3.firebaseapp.com',projectId:'epic-adventure-d89e3',storageBucket:'epic-adventure-d89e3.firebasestorage.app',messagingSenderId:'538638397027',appId:'1:538638397027:web:7054ea980ce5788c6f5256'};
+  window._app=firebase.apps.length?firebase.apps[0]:firebase.initializeApp(cfg);
+  firebase.auth(window._app).setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+  window._db=firebase.firestore(window._app);
+  return window._app;
+}
+function getDB(){getApp();return window._db;}
+function getAuth2(){getApp();return firebase.auth(window._app);}
+
+async function saveJournal(){
+  const user=getAuth2().currentUser;
+  if(!user){alert('Please sign in first on the index page.');return;}
+  const entry=document.getElementById('_journal').value;
+  const sync=document.getElementById('_sync');
+  sync.textContent='saving...';
+  try{
+    await getDB().collection('davie_jayne_journals').doc(PAGE_ID).set({entry,saved:new Date().toISOString(),email:user.email});
+    sync.textContent='saved to cloud';
+    toast('saved');
+  }catch(e){sync.textContent='save error: '+e.message;}
+}
+
+async function loadJournal(){
+  const user=getAuth2().currentUser;
+  const box=document.getElementById('_journal');
+  if(!box) return;
+  if(!user){document.getElementById('_sync').textContent='sign in to load journal';return;}
+  try{
+    const snap=await getDB().collection('davie_jayne_journals').doc(PAGE_ID).get();
+    if(snap.exists){box.value=snap.data().entry||'';document.getElementById('_sync').textContent='loaded';}
+    else{document.getElementById('_sync').textContent='ready to write';}
+  }catch(e){document.getElementById('_sync').textContent='load error: '+e.message;}
+}
+
+getApp();
+getAuth2().onAuthStateChanged(user=>{if(user) loadJournal();});
+
+loadWeather(33.47,-82.23);
+</script>
+</body>
+</html>

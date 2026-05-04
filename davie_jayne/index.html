@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 Epic Adventure — Davie Jayne's Journal</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"DM Sans",sans-serif;background:#0d2238;min-height:100vh;}
+.hero{background:#1a3a5c;border-bottom:3px solid #c8873a;padding:2.5rem 1.25rem 2rem;text-align:center;}
+.hero-title{font-family:"Caveat",cursive;font-size:52px;font-weight:700;color:#fdf6ee;line-height:1.05;margin-bottom:.3rem;}
+.hero-sub{font-family:"Caveat",cursive;font-size:22px;color:#c8873a;margin-bottom:.5rem;}
+.hero-dates{font-family:"Lora",serif;font-size:14px;font-style:italic;color:#fdf6ee;opacity:.65;}
+.legend{background:#f5ede0;border-bottom:2px solid #c8873a;padding:.5rem 1.25rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;}
+.legend-lbl{font-family:"DM Sans",sans-serif;font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:#8a6a40;}
+.legend-item{font-family:"Caveat",cursive;font-size:15px;font-weight:600;}
+.legend-item.stay{color:#2a7060;}.legend-item.fam{color:#904050;}
+.grid-wrap{width:100%;margin:0;padding:1rem .5rem 3rem;}
+.region{font-family:"DM Sans",sans-serif;font-size:9.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#c8873a;padding:.5rem 0;border-top:1px dashed #c8873a;margin:.5rem 0 .65rem;}
+.region:first-of-type{border-top:none;}
+.stop-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:.5rem;width:100%;}
+@media(max-width:600px){.stop-grid{grid-template-columns:repeat(2,1fr);}}
+.stop-card{display:block;text-decoration:none;background:#fdf6ee;border-radius:11px;padding:.75rem .9rem;border:1.5px solid #e2d5c0;border-left:4px solid;transition:transform .12s,box-shadow .12s;}
+.stop-card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.22);}
+.stop-card.stay{border-left-color:#4a9080;}.stop-card.fam{border-left-color:#c06878;}
+.stop-date{font-family:"Caveat",cursive;font-size:12px;font-weight:700;display:block;margin-bottom:2px;}
+.stop-card.stay .stop-date{color:#2a7060;}.stop-card.fam .stop-date{color:#904050;}
+.stop-name{font-family:"Lora",serif;font-size:12.5px;font-weight:500;color:#1a3a5c;display:block;line-height:1.3;}
+.stop-sub{font-family:"Caveat",cursive;font-size:11px;color:#7a6040;display:block;margin-top:2px;}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div style="width:80px;margin:0 auto 1rem;">
+    <svg viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+      <rect width="52" height="52" rx="7" fill="#0d2238"/>
+      <rect x="2.5" y="2.5" width="47" height="47" rx="6" fill="none" stroke="#c8873a" stroke-width="1.5"/>
+      <line x1="26" y1="13" x2="26" y2="9" stroke="#f5c850" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="34.7" y1="15.3" x2="37.5" y2="12.5" stroke="#f5c850" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="17.3" y1="15.3" x2="14.5" y2="12.5" stroke="#f5c850" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="38" y1="24" x2="42" y2="24" stroke="#f5c850" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="14" y1="24" x2="10" y2="24" stroke="#f5c850" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="26" cy="24" r="8" fill="#f5c850" stroke="#c8873a" stroke-width="1"/>
+      <polygon points="2,46 14,30 26,46" fill="#2a5070"/>
+      <polygon points="26,46 38,30 50,46" fill="#1a3a5c"/>
+      <polygon points="12,46 26,34 40,46" fill="#1e4468"/>
+      <polygon points="14,30 17,34 11,34" fill="#fdf6ee" opacity="0.85"/>
+      <polygon points="38,30 41,34 35,34" fill="#fdf6ee" opacity="0.85"/>
+      <line x1="2" y1="46" x2="50" y2="46" stroke="#c8873a" stroke-width="1.5"/>
+    </svg>
+  </div>
+  <div class="hero-title">2026 Epic Adventure 🌿</div>
+  <div class="hero-sub">Davie Jayne's Adventure Journal</div>
+  <div class="hero-dates">May 22 – July 21, 2026 &nbsp;·&nbsp; ~60 days &nbsp;·&nbsp; 5,241 miles</div>
+</div>
+<div class="legend" style="justify-content:space-between;">
+  <div style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;">
+    <span class="legend-lbl">key:</span>
+    <span class="legend-item stay">⛺ adventure stop</span>
+    <span class="legend-item fam">🏠 family stop</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:.5rem;">
+    <span id="authStatus" style="font-size:11px;color:#8a6a40;"></span>
+    <button id="authBtn" onclick="signIn()" style="background:#4285f4;color:white;font-size:11px;font-weight:600;padding:5px 12px;border-radius:14px;border:none;cursor:pointer;">Sign In</button>
+  </div>
+</div>
+<div class="grid-wrap">
+  <div class="region">Georgia → Illinois</div><div class="stop-grid"><a href="01_colemans.html" class="stop-card fam">
+  <span class="stop-date">🏠 May 22</span>
+  <span class="stop-name">Coleman's</span>
+  <span class="stop-sub">Springville, AL · 4 nights</span>
+</a><a href="02_farm.html" class="stop-card fam">
+  <span class="stop-date">🌾 May 26</span>
+  <span class="stop-name">The Farm</span>
+  <span class="stop-sub">Benton, IL · 4 nights</span>
+</a></div><div class="region">The Great Plains</div><div class="stop-grid"><a href="03_omaha.html" class="stop-card stay">
+  <span class="stop-date">⚾ May 31</span>
+  <span class="stop-name">Omaha</span>
+  <span class="stop-sub">Offutt AFB, NE · 2 nights</span>
+</a></div><div class="region">Badlands + Black Hills</div><div class="stop-grid"><a href="04_badlands.html" class="stop-card stay">
+  <span class="stop-date">🏔️ Jun 3</span>
+  <span class="stop-name">The Badlands</span>
+  <span class="stop-sub">Wall, SD · 4 nights</span>
+</a><a href="05_blackhills.html" class="stop-card stay">
+  <span class="stop-date">🌲 Jun 7</span>
+  <span class="stop-name">Black Hills</span>
+  <span class="stop-sub">Keystone, SD · 5 nights</span>
+</a></div><div class="region">Wyoming + Montana</div><div class="stop-grid"><a href="06_devtower.html" class="stop-card stay">
+  <span class="stop-date">🗼 Jun 12</span>
+  <span class="stop-name">Devils Tower</span>
+  <span class="stop-sub">Wyoming · 2 nights</span>
+</a><a href="07_yellowstone.html" class="stop-card stay">
+  <span class="stop-date">🌋 Jun 15</span>
+  <span class="stop-name">Yellowstone</span>
+  <span class="stop-sub">Cameron, MT · 5 nights</span>
+</a></div><div class="region">Grand Teton + Colorado</div><div class="stop-grid"><a href="08_teton.html" class="stop-card stay">
+  <span class="stop-date">⛰️ Jun 20</span>
+  <span class="stop-name">Grand Teton</span>
+  <span class="stop-sub">Moose, WY · 3 nights</span>
+</a><a href="09_rmnp.html" class="stop-card stay">
+  <span class="stop-date">🏔️ Jun 25</span>
+  <span class="stop-name">Rocky Mountain NP</span>
+  <span class="stop-sub">Green Ridge, CO · 3 nights</span>
+</a><a href="10_usafa.html" class="stop-card stay">
+  <span class="stop-date">✈️ Jun 28</span>
+  <span class="stop-name">Colorado Springs</span>
+  <span class="stop-sub">USAF Academy · 5 nights</span>
+</a><a href="11_haviland.html" class="stop-card stay">
+  <span class="stop-date">🎆 Jul 3</span>
+  <span class="stop-name">Durango & Silverton</span>
+  <span class="stop-sub">Haviland Lake, CO · 5 nights</span>
+</a></div><div class="region">Southwest + Texas</div><div class="stop-grid"><a href="12_paloduro.html" class="stop-card stay">
+  <span class="stop-date">🏜️ Jul 9</span>
+  <span class="stop-name">Palo Duro Canyon</span>
+  <span class="stop-sub">Canyon, TX · 2 nights</span>
+</a><a href="13_lewisville.html" class="stop-card fam">
+  <span class="stop-date">🏖️ Jul 11</span>
+  <span class="stop-name">Lake Lewisville</span>
+  <span class="stop-sub">Hickory Creek, TX · 4 nights</span>
+</a></div><div class="region">Home</div><div class="stop-grid"><a href="14_okmtn.html" class="stop-card stay">
+  <span class="stop-date">⛺ Jul 17</span>
+  <span class="stop-name">Oak Mountain</span>
+  <span class="stop-sub">Birmingham, AL · 3 nights</span>
+</a><a href="15_home.html" class="stop-card fam">
+  <span class="stop-date">🏡 Jul 21</span>
+  <span class="stop-name">Home! 🎉</span>
+  <span class="stop-sub">Grovetown, GA · trip complete!</span>
+</a></div>
+</div>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script>
+const _djCfg={apiKey:'AIzaSyD5g2vWXE5CkUFA-0a5NKNnTzD3n5aESXI',authDomain:'epic-adventure-d89e3.firebaseapp.com',projectId:'epic-adventure-d89e3',storageBucket:'epic-adventure-d89e3.firebasestorage.app',messagingSenderId:'538638397027',appId:'1:538638397027:web:7054ea980ce5788c6f5256'};
+const _djApp=firebase.apps.length?firebase.apps[0]:firebase.initializeApp(_djCfg);
+firebase.auth(_djApp).setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+function signIn(){const p=new firebase.auth.GoogleAuthProvider();firebase.auth(_djApp).signInWithRedirect(p);}
+function signOut(){firebase.auth(_djApp).signOut();}
+firebase.auth(_djApp).getRedirectResult().catch(e=>console.log('redirect:',e));
+firebase.auth(_djApp).onAuthStateChanged(user=>{
+  const btn=document.getElementById('authBtn');
+  const status=document.getElementById('authStatus');
+  if(user){
+    if(btn){btn.textContent='Sign Out';btn.style.background='#888';btn.onclick=signOut;}
+    if(status) status.textContent='Hi '+user.displayName.split(' ')[0]+'!';
+  }else{
+    if(btn){btn.textContent='Sign In';btn.style.background='#4285f4';btn.onclick=signIn;}
+    if(status) status.textContent='';
+  }
+});
+</script>
+</body>
+</html>
